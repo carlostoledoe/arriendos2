@@ -1,0 +1,11 @@
+username;first_name;last_name;email;password;password_confirm;direccion
+12345678-9;Freddie;Mercury;fmercury@mail.com;1234;1234;123 Queen St.
+23456789-0;Robert;Plant;rplant@mail.com;1234;1234;456 Rock Ln.
+34567890-1;James;Hetfield;jhetfield@mail.com;1234;1234;789 Metal Ave.
+45678901-2;Axl;Rose;arose@mail.com;1234;1234;321 Sunset Blvd.
+56789012-3;Ozzy;Osbourne;oosbourne@mail.com;1234;1234;555 Paranoid Rd.
+67890123-4;David;Gilmour;dgilmour@mail.com;1234;1234;777 Comfortably Numb St.
+78901234-5;Kurt;Cobain;kcobain@mail.com;1234;1234;999 Smells Like Teen Spirit Ave.
+89012345-6;Roger;Waters;rwaters@mail.com;1234;1234;444 The Wall Dr.
+90123456-7;Bruce;Dickinson;bdickinson@mail.com;1234;1234;222 Iron Maiden Blvd.
+01234567-8;Angus;Young;ayoung@mail.com;1234;1234;666 Highway to Hell Rd.

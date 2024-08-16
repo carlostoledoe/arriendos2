@@ -1,0 +1,21 @@
+nombre,descripcion,m2_construidos,m2_totales,num_estacionamientos,num_habitaciones,num_baños,direccion,precio_mensual_arriendo,tipo_de_inmueble,comuna_cod,rut_propietario
+Casa Acogedora,Amplia casa con jardín,200,300,2,4,3,Calle Principal 123,500000,casa,01101,12345678-9
+Departamento Moderno,Departamento céntrico con vista al mar,80,100,1,2,1,Avenida Central 456,300000,departamento,03102,23456789-0
+Casa de Playa,Casa frente al mar,150,250,3,3,2,Playa del Sol 789,700000,casa,04102,34567890-1
+Loft Urbano,Loft en el corazón de la ciudad,60,80,0,1,1,Calle Urbana 101,200000,departamento,04301,45678901-2
+Apartamento Elegante,Apartamento con acabados de lujo,100,120,1,2,2,Avenida Elegancia 222,400000,departamento,05101,56789012-3
+Casa Familiar,Amplia casa para toda la familia,180,220,2,5,3,Calle Felicidad 333,600000,casa,05109,67890123-4
+Penthouse con Vistas,Penthouse con terraza panorámica,120,150,2,3,2,Avenida Vista 444,800000,parcela,05403,78901234-5
+Estudio Acogedor,Estudio ideal para solteros,40,50,0,1,1,Calle Solitaria 555,150000,departamento,05401,89012345-6
+Casa Rústica,Casa de campo con chimenea,160,200,1,4,2,Camino Rural 666,550000,casa,05701,90123456-7
+Apartamento Minimalista,Apartamento con diseño minimalista,70,90,1,1,1,Avenida Minimal 777,250000,parcela,05804,01234567-8
+Casa Tranquila,Casa en zona residencial,140,180,2,3,2,Calle Serenidad 888,450000,casa,06202,12345678-9
+Departamento Céntrico,Departamento cerca de comercios,90,110,1,2,1,Avenida Comercial 999,350000,departamento,06303,23456789-0
+Casa de Campo,Casa con amplio terreno,200,250,3,4,3,Camino Rural 111,600000,casa,07101,34567890-1
+Loft Industrial,Loft con estilo industrial,70,90,0,1,1,Calle Industria 222,250000,departamento,07304,45678901-2
+Apartamento Luminoso,Apartamento con mucha luz natural,60,75,1,1,1,Avenida Sol 333,200000,departamento,07402,56789012-3
+Casa Moderna,Casa minimalista con piscina,180,220,2,4,3,Calle Vanguardia 444,650000,casa,08102,67890123-4
+Penthouse de Lujo,Penthouse con vistas panorámicas,130,160,2,3,2,Avenida Exclusiva 555,850000,departamento,08313,78901234-5
+Estudio Urbano,Estudio en el corazón de la ciudad,50,65,0,1,1,Calle Urbana 666,180000,departamento,09115,89012345-6
+Casa Familiar Grande,Casa espaciosa para toda la familia,220,280,2,5,3,Calle Felicidad 777,700000,casa,09207,90123456-7
+Apartamento Elegante II,Apartamento con acabados de lujo,80,100,1,2,2,Avenida Elegancia 888,400000,parcela,10301,01234567-8
