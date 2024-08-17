@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3 class="text-center my-4">Regístrate</h3>
+<div class="row">
+    <div class="col-4 offset-4">
+        <form action="{% url 'register' %}" method="post"> <!-- ruta nombrada -->
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Rut:</label>
+                <input
+                    id=""
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    placeholder=""
+                    value="{{ username | default:'' }}"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombre:</label>
+                <input
+                    id=""
+                    type="text"
+                    class="form-control"
+                    name="first_name"
+                    placeholder=""
+                    value="{{ first_name | default:'' }}"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido:</label>
+                <input
+                    id=""
+                    type="text"
+                    class="form-control"
+                    name="last_name"
+                    placeholder=""
+                    value="{{ last_name | default:'' }}"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <input
+                    id=""
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    placeholder=""
+                    value="{{ email | default:'' }}"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Teléfono:</label>
+                <input
+                    id=""
+                    type="text"
+                    class="form-control"
+                    name="telefono"
+                    placeholder=""
+                    value="{{ telefono | default:'' }}"
+                >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dirección:</label>
+                <input
+                    id=""
+                    type="text"
+                    class="form-control"
+                    name="direccion"
+                    placeholder=""
+                    value="{{ direccion | default:'' }}"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ingrese contraseña:</label>
+                <input
+                    id=""
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    placeholder=""
+                    value="{{ password | default:'' }}"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Repita contraseña:</label>
+                <input
+                    id=""
+                    type="password"
+                    class="form-control"
+                    name="password_repeat"
+                    placeholder=""
+                    value="{{ password_repeat | default:'' }}"
+                    required
+                >
+            </div>
+            <div class="mb-3">
+                <div class="form-check form-check-inline">
+                    <input
+                        id=""
+                        type="radio"
+                        class="form-check-imput"
+                        name="rol"
+                        placeholder=""
+                        value="arrendador"
+                        required
+                        {% if rol == 'arrendador' %}
+                            checked
+                        {% endif %}
+                    >
+                    <label class="form-check-label">Arrendador</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input
+                        id=""
+                        type="radio"
+                        class="form-check-imput"
+                        name="rol"
+                        placeholder=""
+                        value="arrendatario"
+                        required
+                        {% if rol == 'arrendatario' %}
+                            checked
+                        {% endif %}
+                    >
+                    <label class="form-check-label">Arrendatario</label>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-sm btn-primary my-3">Registrarse</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
