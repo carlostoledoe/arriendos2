@@ -1,0 +1,2 @@
+Nombre: Casa Rústica || Descripción: Casa de campo con chimenea || Región: De Valparaíso
+Nombre: Casa de Campo || Descripción: Casa con amplio terreno || Región: Del Maule

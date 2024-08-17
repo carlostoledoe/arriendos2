@@ -53,6 +53,6 @@ class Inmueble(models.Model):
     )
     propietario = models.ForeignKey(
         User,
-        related_name='inmuebles',
+        related_name='inmueble',
         on_delete=models.RESTRICT
     )
