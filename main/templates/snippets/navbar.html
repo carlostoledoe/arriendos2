@@ -1,1 +1,48 @@
-<h1>Aquí debe ir el navbar....</h1>
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-body-light mb-3">
+    <div class="container d-flex flex-wrap">
+        <a class="navbar-brand" href="/"><img class="img-logo" src="{% static 'img/logo.jpg' %}"
+                alt="Logo arriendos"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                </li>
+                {% if user.is_authenticated %}
+                    {% if user.userprofile.rol == 'arrendador' or user.is_staff %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Agregar Propiedad</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mis Datos</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="nav-link link-body-emphasis" type="submit">Log Out</button>
+                    </form>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Ingresa</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link link-body-emphasis px-2">Regístrate</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
