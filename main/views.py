@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
-from main.services import crear_user
+from main.services import crear_user, editar_user_sin_password
+from django.contrib.auth.decorators import login_required
+from main.models import Inmueble
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -33,3 +36,39 @@ def register(request):
             })
     else: # en caso de metodo GET
         return render(request, 'registration/register.html')
+    
+
+
+@login_required
+def profile(request):
+    id_usuario = request.user.id
+    propiedades = Inmueble.objects.filter(propietario_id=id_usuario)
+    context = {
+        'propiedades': propiedades
+    }
+
+    if request.method == 'POST':
+        if request.POST['telefono'].strip() != '':
+            username = request.user
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            email = request.POST['email']
+            direccion = request.POST['direccion']
+            telefono = request.POST['telefono']
+            rol = request.POST['rol']
+            editar_user_sin_password(username, first_name, last_name, email, direccion, rol, telefono)
+            messages.success(request, 'Ha actualizado sus datos con exito')
+            return redirect('/accounts/profile')
+        else:
+            username = request.user
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            email = request.POST['email']
+            direccion = request.POST['direccion']
+            rol = request.POST['rol']
+                        
+            editar_user_sin_password(username, first_name, last_name, email, rol, direccion)
+            messages.success(request, 'Ha actualizado sus datos con exito sin telefono')
+            return redirect('/accounts/profile')
+    else:
+        return render(request, 'profile.html', context)

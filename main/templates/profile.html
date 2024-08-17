@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-4">
+			<h4 class="text-center">Cambia tu contraseña</h4>
+            .....
+		</div>
+		<div class="col-4">
+			<h4 class="text-center">Actualiza tus datos</h4>
+			<form action="{% url 'profile' %}" method="post">
+				{% csrf_token %}
+				<div class="mb-3">
+					<label class="form-label">Nombre:</label>
+					<input
+							id=""
+							type="text"
+							class="form-control"
+							name="first_name"
+							placeholder=""
+							value="{{ user.first_name }}"
+							required
+					>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Apellido:</label>
+					<input
+							id=""
+							type="text"
+							class="form-control"
+							name="last_name"
+							placeholder=""
+							value="{{ user.last_name }}"
+							required
+					>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Email:</label>
+					<input
+							id=""
+							type="email"
+							class="form-control"
+							name="email"
+							placeholder=""
+							value="{{ user.email}}"
+							required
+					>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Teléfono:</label>
+					<input
+							id=""
+							type="text"
+							class="form-control"
+							name="telefono"
+							placeholder=""
+							value="{% if user.userprofile.telefono_personal %}{{ user.userprofile.telefono_personal }}{% endif %}"
+					>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Dirección:</label>
+					<input
+						id=""
+						type="text"
+						class="form-control"
+						name="direccion"
+						placeholder=""
+						value="{{ user.userprofile.direccion }}"
+						required
+					>
+				</div>
+				<div class="mb-3">
+					<div class="form-check form-check-inline">
+					<input
+						id=""
+						type="radio"
+						class="form-check-imput"
+						name="rol"
+						placeholder=""
+						value="arrendador"
+						required
+						{% if user.userprofile.rol == 'arrendador' %}
+							checked
+						{% endif %}
+					>
+						<label class="form-check-label">Arrendador</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input
+								id=""
+								type="radio"
+								class="form-check-imput"
+								name="rol"
+								placeholder=""
+								value="arrendatario"
+								required
+								{% if user.userprofile.rol == 'arrendatario' %}
+									checked
+								{% endif %}
+						>
+						<label class="form-check-label">Arrendatario</label>
+					</div>
+				</div>
+				<div class="d-flex justify-content-center">
+						<button type="submit" class="btn btn-sm btn-primary my-3">Actualizar</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-4">
+			<h4 class="text-center">Tus propiedades</h4>
+			......
+		</div>
+	</div>
+</div>
+{% endblock %}
