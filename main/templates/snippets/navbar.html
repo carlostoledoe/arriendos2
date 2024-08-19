@@ -18,7 +18,7 @@
                 {% if user.is_authenticated %}
                     {% if user.userprofile.rol == 'arrendador' or user.is_staff %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Agregar Propiedad</a>
+                        <a class="nav-link" href="{% url 'add_propiedad' %}">Agregar Propiedad</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">

@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+	<h3 class="text-center my-4">Ingrese Propiedad</h3>
+	<form action="{% url 'add_propiedad' %}" method="post">
+			{% csrf_token %}
+		<div class="row">
+			<div class="col-4">
+				<div class="mb-3">
+					<label class="form-label">Nombre:</label>
+					<input
+							id=""
+							type="text"
+							class="form-control"
+							name="nombre"
+							placeholder=""
+							value="{{ nombre | default:'' }}"
+							required
+					>
+				</div>
+				<div class="mb-3">
+						<label class="form-label">Descripcion:</label>
+						<textarea
+								id=""
+								type="text"
+								class="form-control"
+								name="descripcion"
+								placeholder=""
+								value="{{ descripcion | default:'' }}"
+								required
+								maxlength="1500"
+						></textarea>
+				</div>
+				<div class="mb-3">
+						<label class="form-label">m2 construidos:</label>
+						<input
+								id=""
+								type="number"
+								class="form-control"
+								name="m2_construidos"
+								placeholder=""
+								value="{{ m2_construidos | default:'' }}"
+								required
+						>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">m2 totales:</label>
+					<input
+							id=""
+							type="number"
+							class="form-control"
+							name="m2_totales"
+							placeholder=""
+							value="{{ m2_totales | default:'' }}"
+							required
+					>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="mb-3">
+					<label class="form-label">Cantidad Estacionamientos:</label>
+					<input
+							id=""
+							type="number"
+							class="form-control"
+							name="num_estacionamientos"
+							placeholder=""
+							value="{{ num_estacionamientos | default:'' }}"
+					>
+				</div>
+				<div class="mb-3">
+						<label class="form-label">Cantidad habiltaciones:</label>
+						<input
+								id=""
+								type="number"
+								class="form-control"
+								name="num_habitaciones"
+								placeholder=""
+								value="{{ num_habitaciones | default:'' }}"
+								required
+						>
+				</div>
+				<div class="mb-3">
+						<label class="form-label">Cantidad de baños:</label>
+						<input
+								id=""
+								type="number"
+								class="form-control"
+								name="num_baños"
+								placeholder=""
+								value="{{ num_baños | default:'' }}"
+								required
+						>
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Precio de arriendo mensual:</label>
+					<input
+					id=""
+					type="number"
+					class="form-control"
+					name="precio_mensual_arriendo"
+					placeholder=""
+					min = "1000"
+					value="{{ precio_mensual_arriendo | default:'' }}"
+					required
+					>
+				</div>
+			</div>
+			<div class="col-4">
+
+				<div class="mb-3">
+					<label class="form-label">Región:</label>
+					<select class="form-select"
+					id = "region_cod"
+					name="region_cod"
+					>
+					<option value>Selecione una región</option>
+					{% for region in regiones %}
+					<option value="{{ region.cod }}">{{ region.nombre }}</option>
+					{% endfor %}
+				</select>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label">Comuna:</label>
+						<select class="form-select"
+						id = "comuna_cod"
+						name="comuna_cod"
+						required>
+						<option value>Selecione una comuna</option>
+						{% for comuna in comunas %}
+						<option value="{{ comuna.cod }}">{{ comuna.nombre }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="mb-3">
+						<label class="form-label">Direccion:</label>
+						<input
+								id=""
+								type="text"
+								class="form-control"
+								name="direccion"
+								placeholder=""
+								value="{{ direccion | default:'' }}"
+								required
+								>
+				</div>
+
+				<div class="mb-3">
+							<label class="form-label">Tipo de inmueble:</label>
+							<select class="form-select"
+								name="tipo_de_inmueble"
+								required>
+								<option value>Selecione un tipo</option>
+								{% for tipo in tipos_inmuebles %}
+									<option value="{{tipo.0}}">{{ tipo.1}}</option>
+								{% endfor %}
+							</select>
+				</div>
+			</div>
+
+			<div class="d-flex justify-content-center">
+					<button type="submit" class="btn btn-sm btn-primary my-3">Ingresar</button>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}
