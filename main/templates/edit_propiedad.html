@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h3 class="text-center my-4">Editar Propiedad</h3>
+  <form action="{% url 'edit_propiedad' id=inmueble.id %}" method="post" enctype="multipart/form-data">
+      <div class="row">
+      {% csrf_token %}
+      <div class="col-4">
+        <div class="mb-3">
+          <label class="form-label">Nombre:</label>
+          <input
+            id=""
+            type="text"
+            class="form-control"
+            name="nombre"
+            placeholder=""
+            value="{{ inmueble.nombre | default:'' }}"
+            required
+          >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Descripcion:</label>
+          <textarea
+            id=""
+            type="text"
+            class="form-control"
+            name="descripcion"
+            placeholder=""
+            required
+            maxlength="1500"
+          >{{ inmueble.descripcion }}</textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">m2 construidos:</label>
+          <input
+            id=""
+            type="number"
+            class="form-control"
+            name="m2_construidos"
+            placeholder=""
+            value="{{ inmueble.m2_construidos | default:'' }}"
+            required
+        >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">m2 totales:</label>
+          <input
+            id=""
+            type="number"
+            class="form-control"
+            name="m2_totales"
+            placeholder=""
+            value="{{ inmueble.m2_totales | default:'' }}"
+            required
+          >
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label class="form-label">Cantidad Estacionamientos:</label>
+          <input
+            id=""
+            type="number"
+            class="form-control"
+            name="num_estacionamientos"
+            placeholder=""
+            value="{{ inmueble.num_estacionamientos | default:'' }}"
+          >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cantidad habiltaciones:</label>
+          <input
+            id=""
+            type="number"
+            class="form-control"
+            name="num_habitaciones"
+            placeholder=""
+            value="{{ inmueble.num_habitaciones | default:'' }}"
+            required
+          >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cantidad de baños:</label>
+          <input
+            id=""
+            type="number"
+            class="form-control"
+            name="num_baños"
+            placeholder=""
+            value="{{ inmueble.num_baños | default:'' }}"
+            required
+          >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Precio de arriendo mensual:</label>
+          <input
+            id=""
+            type="number"
+            class="form-control"
+            name="precio_mensual_arriendo"
+            placeholder=""
+            min = "1000"
+            value="{{ inmueble.precio_mensual_arriendo | default:'' }}"
+            required
+          >
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label class="form-label">Región:</label>
+          <select class="form-select"
+            id = "region_cod"
+            name="region_cod"
+            >
+            <option value>Selecione una región</option>
+            {% for region in regiones %}
+              <option value="{{ region.cod }}"
+              {% if region.cod == cod_region %}selected{% endif %}
+              >{{ region.nombre }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Comuna:</label>
+            <select class="form-select"
+              id = "comuna_cod"
+              name="comuna_cod"
+              required>
+              <option value>Selecione una comuna</option>
+              {% for comuna in comunas %}
+                <option value="{{ comuna.cod }}"
+                {% if comuna.cod == inmueble.comuna_id %}selected{% endif %}
+                >{{ comuna.nombre }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Direccion:</label>
+          <input
+            id=""
+            type="text"
+            class="form-control"
+            name="direccion"
+            placeholder=""
+            value="{{ inmueble.direccion | default:'' }}"
+            required
+            >
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Tipo de inmueble:</label>
+          <select class="form-select"
+            name="tipo_de_inmueble"
+            required>
+            <option value>Selecione un tipo</option>
+            {% for tt in inmueble.inmuebles %} <!-- inmuebles son las tuplas -->
+              <option
+              value="{{tt.0}}"
+              {% if tt.0 == inmueble.tipo_de_inmueble %}selected{% endif %}
+              >
+              {{ tt.1}}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-sm btn-primary my-3">Editar</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

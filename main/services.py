@@ -24,7 +24,7 @@ def crear_inmueble(nombre:str, descripcion:str, m2_construidos:int, m2_totales:i
     )
     return True
 
-def editar_inmueble(inmueble_id:int, nombre:str, descripcion:str, m2_construidos:int, m2_totales:int, num_estacionamientos:int, num_habitaciones:int, num_baños:int, direccion:str, precio_mensual_arriendo:int, tipo_de_inmueble:str, comuna:str, rut_propietario:str, imagen:object):
+def editar_inmueble(inmueble_id:int, nombre:str, descripcion:str, m2_construidos:int, m2_totales:int, num_estacionamientos:int, num_habitaciones:int, num_baños:int, direccion:str, precio_mensual_arriendo:int, tipo_de_inmueble:str, comuna:str, rut_propietario:str):
     inmueble = Inmueble.objects.get(id=inmueble_id)
     comuna = Comuna.objects.get(cod=comuna)
     propietario = User.objects.get(username=rut_propietario)
@@ -40,7 +40,6 @@ def editar_inmueble(inmueble_id:int, nombre:str, descripcion:str, m2_construidos
     inmueble.tipo_de_inmueble = tipo_de_inmueble
     inmueble.comuna = comuna
     inmueble.propietario = propietario
-    inmueble.imagen = imagen
     inmueble.save()
     return True
 

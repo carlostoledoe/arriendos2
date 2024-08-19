@@ -136,7 +136,27 @@
 		</div>
 		<div class="col-4">
 			<h4 class="text-center">Tus propiedades</h4>
-			......
+			{% for propiedad in propiedades %}
+			<div class="card mb-3" style="max-width: 540px;">
+				<div class="row g-0 align-items-center">
+					<div class="col-md-4">
+						<img src="{% static 'img/casa_ejemplo.webp' %}" 
+						class="img-fluid ms-2" alt="...">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title">{{ propiedad.nombre }}</h5>
+							<p class="card-text"><small class="text-body-secondary">{{ propiedad.comuna }}</small></p>
+						</div>
+						<div class="text-center">
+							<a href="{% url 'edit_propiedad' id=propiedad.id %}" class="card-link">Editar</a>
+							<a href="{% url 'delete_propiedad' id=propiedad.id %}" class="card-link" >Borrar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
 		</div>
 	</div>
 </div>
