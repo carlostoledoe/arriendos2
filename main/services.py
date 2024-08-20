@@ -46,7 +46,7 @@ def editar_inmueble(inmueble_id:int, nombre:str, descripcion:str, m2_construidos
 
 def crear_user(request, username:str, first_name:str, last_name:str, email:str, password:str, pass_confirm:str, direccion:str, rol:str='arrendatario', telefono:str=None) -> bool:
     if password != pass_confirm:
-        messages.error(request, 'Las contraseñas no coinciden')
+        messages.warning(request, 'Las contraseñas no coinciden')
         return False
     try:
         user = User.objects.create_user(
@@ -57,7 +57,7 @@ def crear_user(request, username:str, first_name:str, last_name:str, email:str, 
             last_name=last_name,
         )
     except IntegrityError:
-        messages.error(request, 'El rut ya está ingresado')
+        messages.warning(request, 'El rut ya está ingresado')
         return False
     UserProfile.objects.create(
         direccion=direccion,
