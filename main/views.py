@@ -38,11 +38,13 @@ def register(request):
         password = request.POST['password']
         password_repeat = request.POST['password_repeat']
             
-        crear = crear_user(request, username, first_name, last_name, email, password, password_repeat, direccion, rol, telefono)
+        crear = crear_user(username, first_name, last_name, email, password, password_repeat, direccion, rol, telefono)
 
         if crear: # Si crear es True
+            messages.success(request, 'Usuario creado con éxito. Por favor ingrese.')
             return redirect('/accounts/login') 
         # Si llegó, crear fue False
+        messages.warning(request, 'Por favor, revise los datos ingresados')
         return render(request, 'registration/register.html', {
             'username': username,
             'first_name': first_name,
