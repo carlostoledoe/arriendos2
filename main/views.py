@@ -1,13 +1,27 @@
 from django.shortcuts import render, redirect
-from main.services import crear_user, editar_user_sin_password, cambio_password, crear_inmueble, editar_inmueble, eliminar_inmueble
+from main.services import crear_user, editar_user_sin_password, cambio_password, crear_inmueble, editar_inmueble, eliminar_inmueble, filtro_comuna_region
 from django.contrib.auth.decorators import login_required
 from main.models import Inmueble, Region, Comuna
 from django.contrib import messages
 
 # Create your views here.
 def index(request):
+    # Recibe información vía get:
     propiedades = Inmueble.objects.all()
+    datos = request.GET
+    comuna_cod = datos.get('comuna_cod', '')
+    region_cod = datos.get('region_cod', '')
+    tipo_inmueble = datos.get('tipo_inmueble', '')
+
+    propiedades = filtro_comuna_region(comuna_cod, region_cod, tipo_inmueble)
+
+    comunas = Comuna.objects.all().order_by('nombre')
+    regiones = Region.objects.all()
+    tipos_inmuebles = Inmueble.inmuebles
     context = {
+        'comunas': comunas,
+        'regiones': regiones,
+        'tipos_inmuebles': tipos_inmuebles,
         'propiedades': propiedades
     }
     return render(request, 'index.html', context)

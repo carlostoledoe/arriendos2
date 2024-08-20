@@ -3,6 +3,62 @@
 {% load static %}
 {% block content %}
 <div class="container">
+    <h1 class="fs-1">Bienvenidos a arriendos.cl</h1>
+
+    <div class="container mt-5">
+        <form action="{% url 'index' %}" method="get">
+        <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <select name="region_cod" id="region_cod" class="form-select">
+                            <option value="">Elige la región</option>
+                                {% for region in regiones %}
+                                <option value="{{ region.cod }}" 
+                                {% if region.cod == region_cod_select %}
+                                selected
+                                {% endif %}
+                                >
+                                    {{ region.nombre }}
+                                </option>
+                                {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <select name="comuna_cod" id="comuna_cod" class="form-select">
+                            <option value="">Elige la comuna</option>
+                                {% for comuna in comunas %}
+                                    <option value="{{ comuna.cod }}"
+                                    {% if comuna.cod == comuna_cod_select %}
+                                    selected
+                                    {% endif %}
+                                    >
+                                    {{ comuna.nombre}}
+                                    </option>
+                                {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <select class="form-select" name="tipo_inmueble">
+                            <option value>Elige el tipo de inmueble</option>
+                            {% for tipo in tipos_inmuebles %}
+                                <option value="{{tipo.0}}">{{ tipo.1}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
     <div class="row">
         {% for propiedad in propiedades %}
         <div class="card mx-2 my-4" style="width: 15rem;">

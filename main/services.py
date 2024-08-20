@@ -1,4 +1,4 @@
-from main.models import Comuna, Inmueble, UserProfile
+from main.models import Comuna, Inmueble, UserProfile, Region
 from django.contrib.auth.models import User
 from django.db.utils import IntegrityError
 from django.db.models import Q
@@ -126,3 +126,24 @@ def obtener_propiedades_regiones(filtro):
     cursor.execute(consulta)
     registros = cursor.fetchall() # LAZY LOADING
     return registros
+
+
+def filtro_comuna_region(comuna_cod, region_cod, tipo_inmueble):
+    query = Q() # Se crear un objeto Q vacío para acumular los filtros
+
+    if tipo_inmueble:
+        query &= Q(tipo_de_inmueble__icontains=tipo_inmueble)
+
+    if comuna_cod:
+        comuna = Comuna.objects.get(cod=comuna_cod)
+        query &= Q(comuna=comuna)
+    elif region_cod:
+        region = Region.objects.get(cod=region_cod)
+        comunas = Comuna.objects.filter(region=region)
+        query &= Q(comuna__in=comunas)
+
+    if not query:
+        return Inmueble.objects.all()
+
+    # Si llega, se retornan los filtros acomulados
+    return Inmueble.objects.filter(query).order_by('comuna')
